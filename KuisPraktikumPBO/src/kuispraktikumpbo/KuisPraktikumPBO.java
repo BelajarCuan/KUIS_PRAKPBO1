@@ -9,7 +9,6 @@ package kuispraktikumpbo;
  * @author ASUS
  */
 import java.util.Scanner;
-import kuispraktikumpbo_beasiswa.BeasiswaPelajar;
 public class KuisPraktikumPBO {
 
     /**
@@ -18,8 +17,8 @@ public class KuisPraktikumPBO {
     public static void main(String[] args) {
         Scanner keyboard = new Scanner (System.in);
         int pil, usia;
-        double konten,design,visual;
-        double jurnal,data,solving;
+        double konten,design,visual,hasilpelajar = 0;
+        double jurnal,data,solving,hasilmahasiswa = 0;
         String nama;
         
         
@@ -35,8 +34,9 @@ public class KuisPraktikumPBO {
         
         if (pil == 1) {
             System.out.println(" --- Form Pendaftaran --- ");
+            Scanner nama1 = new Scanner (System.in);
             System.out.print("Masukan Nama   : ");
-            nama = keyboard.next();
+            nama = nama1.nextLine();
             
             System.out.print("Usia           : ");
             usia = keyboard.nextInt();
@@ -64,7 +64,7 @@ public class KuisPraktikumPBO {
                 if (pil == 1) {
                     double hasil;
                     Seleksi pa;
-                    pa = new Seleksi (konten,visual,design);
+                    pa = new Seleksi (konten,visual,design,0,0,0);
                     hasil = pa.hasilpelajar();
                     System.out.println("Nilai Akhir : " + hasil);
                     if (hasil < 87.5) {
@@ -99,7 +99,7 @@ public class KuisPraktikumPBO {
             System.out.print("Masukan Nama   : ");
             nama = keyboard.next();
             System.out.print("Usia           : ");
-            usia = keyboard.next();
+            usia = keyboard.nextInt();
             
             do {
                 System.out.println(" --- Form Penilaian --- ");
@@ -120,16 +120,16 @@ public class KuisPraktikumPBO {
                 System.out.print("Pilih : ");
                 pil = keyboard.nextInt();
                 if (pil == 1) {
-                    double hasil;
+                    double hasil1;
                     Seleksi ps;
-                    ps = new Seleksi (jurnal ,data, solving);
-                    hasil = ps.hasilmahasiswa();
-                    System.out.println("Nilai Akhir : " + hasil);
-                    if (hasil < 87.5) {
+                    ps = new Seleksi (0,0,0,jurnal,data,solving);
+                    hasil1 = ps.hasilmahasiswa();
+                    System.out.println("Nilai Akhir : " + hasil1);
+                    if (hasil1 < 87.5) {
                         System.out.println("Keterangan : GAGAL");
                         System.out.println("MOHON MAAF " + nama + " ( " + usia + " Tahun) tidak diterima pada program Beasiswa Pelajar, karena belum mencapai nilai yang diharapkan pada tahap seleksi.");
                      }
-                    else if (hasil >= 87.5) {
+                    else if (hasil1 >= 87.5) {
                         System.out.println("Keterangan : BERHASIL");
                         System.out.println("SELAMAT! " + nama + " ( " + usia + " Tahun)  dinyatakan diterima pada program Beasiswa Pelajar, karena telah mencapai nilai yang diharapkan pada tahap seleksi.");
                     
